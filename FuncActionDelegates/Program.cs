@@ -4,7 +4,8 @@ namespace FuncActionDelegates
 {
     class Program
     {
-        public static PersonFormat formatPerson;
+        //public static PersonFormat formatPerson;
+        private static Func<Person, string> formatPerson;
 
         static void Main(string[] args)
         {
@@ -16,17 +17,17 @@ namespace FuncActionDelegates
             switch (choice)
             {
                 case "1":
-                    formatPerson = Formatters.Default;
+                    formatPerson = p => p.ToString();
                     break;
                 case "2":
-                    formatPerson = Formatters.LastNameToUpper;
+                    formatPerson = p => p.LastName.ToUpper();
                     break;
                 case "3":
-                    formatPerson = Formatters.FirstNameToUpper;
+                    formatPerson = p => p.FirstName.ToLower();
                     break;
                 case "4":
-                    formatPerson = Formatters.FullName;
-                    break;
+                    formatPerson = p => string.Format("{0} {1}", p.FirstName, p.LastName);
+                break;
             }
                                                  
             foreach (var p in personList)

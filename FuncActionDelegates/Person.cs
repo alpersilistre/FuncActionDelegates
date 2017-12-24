@@ -22,7 +22,7 @@ namespace FuncActionDelegates
         }
     }
 
-    public delegate string PersonFormat(Person input);
+    //public delegate string PersonFormat(Person input);
 
     public class Person
     {
@@ -35,8 +35,8 @@ namespace FuncActionDelegates
         {
             return string.Format("{0} {1}", FirstName, LastName);
         }
-
-        public string ToString(PersonFormat format)
+        
+        public string ToString(Func<Person, string> format)
         {
             if (format != null)
                 return format(this);
